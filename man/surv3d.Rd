@@ -6,7 +6,7 @@
     pstyle = c("point", "text"), psize = c(20, 10),
     pcol = c("red", "black"), ptext = c("X", ""),
     palpha = 1, title = "Spatial Survival",
-    basegrid = FALSE, baseplane = FALSE)
+    basegrid = TRUE, baseplane = TRUE)
 }
 \arguments{
   \item{spp}{A spatial points data frame}
@@ -17,7 +17,7 @@
 
   \item{lcol}{Line colour for stems}
 
-  \item{lty}{Line style for stems}
+  \item{lalpha}{Opacity for stems}
 
   \item{pstyle}{Point style "point" or "text"}
 
@@ -29,6 +29,8 @@
 
   \item{ptext}{Vector of length 2 for uncensored/censored
   text characters}
+
+  \item{palpha}{Opacity for points/text}
 
   \item{title}{Main title for plot}
 

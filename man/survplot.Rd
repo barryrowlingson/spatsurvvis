@@ -6,6 +6,8 @@
 }
 \arguments{
   \item{ss}{a Surv object with right-censoring}
+
+  \item{covar}{some covariates}
 }
 \value{
   a ggplot object

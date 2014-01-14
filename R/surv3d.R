@@ -6,11 +6,12 @@
 ##' @param ss A Surv object (with right-censoring)
 ##' @param lwd Line width for stems
 ##' @param lcol Line colour for stems
-##' @param lty Line style for stems
+##' @param lalpha Opacity for stems
 ##' @param pstyle Point style "point" or "text"
 ##' @param psize Vector of length 2 for uncensored/censored points size
 ##' @param pcol Vector of length 2 for uncensored/censored points colours
 ##' @param ptext Vector of length 2 for uncensored/censored text characters
+##' @param palpha Opacity for points/text
 ##' @param title Main title for plot
 ##' @param basegrid add a grid at t=0
 ##' @param baseplane add a plane at t=0

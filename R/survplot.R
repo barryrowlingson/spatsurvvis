@@ -3,6 +3,7 @@
 ##' lets use ggplot for this
 ##' @title ggplot for survival data
 ##' @param ss a Surv object with right-censoring
+##' @param covar some covariates
 ##' @return a ggplot object
 ##' @author Barry S Rowlingson
 ##' @export
