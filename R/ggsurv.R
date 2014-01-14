@@ -12,7 +12,7 @@ survGrob <- function(time, index, censoring, size=1, colour="black", linetype=1)
         )
 }
 
-GeomSurv = proto(ggplot2:::Geom,{
+GeomSurv = proto::proto(ggplot2:::Geom,{
     objname="surv"
     draw <- function(.,data,scales,coordinates,...){
         with(coord_transform(coordinates, data, scales), 
