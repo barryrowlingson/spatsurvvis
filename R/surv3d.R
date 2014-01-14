@@ -6,14 +6,25 @@
 ##' @param ss A Surv object (with right-censoring)
 ##' @param lwd Line width for stems
 ##' @param lcol Line colour for stems
-##' @param size Vector of length 2 for uncensored/censored points
-##' @param pcol Vector of length 2 for uncensored/censored points
+##' @param lty Line style for stems
+##' @param pstyle Point style "point" or "text"
+##' @param psize Vector of length 2 for uncensored/censored points size
+##' @param pcol Vector of length 2 for uncensored/censored points colours
+##' @param ptext Vector of length 2 for uncensored/censored text characters
 ##' @param title Main title for plot
 ##' @param basegrid add a grid at t=0
 ##' @param baseplane add a plane at t=0
 ##' @return 
 ##' @author Barry S Rowlingson
-surv3d <- function(spp, ss, lwd=2, lcol="black", size=c(20,10), pcol=c("red","black"), title="Spatial Survival", basegrid=FALSE, baseplane=FALSE){
+surv3d <- function(spp, ss,
+                   lwd=2, lcol="black",lalpha=1.0,
+                   pstyle="point",
+                   psize=c(20,10),
+                   pcol=c("red","black"),
+                   ptext = c("X",""),
+                   palpha=1.0,
+                   title="Spatial Survival",
+                   basegrid=FALSE, baseplane=FALSE){
 
     nr = nrow(spp)
     xy = rbind(coordinates(spp),coordinates(spp))
@@ -23,15 +34,20 @@ surv3d <- function(spp, ss, lwd=2, lcol="black", size=c(20,10), pcol=c("red","bl
     xyz = xyz[rep(1:nr,rep(2,nr))+rep(c(0,nr),nr),]
 
     # segments3d takes pairs for line segments
-    segments3d(xyz,lwd=lwd, col=lcol)
+    segments3d(xyz,lwd=lwd, col=lcol, alpha=lalpha)
 
     # add points for uncensored obs
     unc = ss[,"status"] == 1
     xyp = cbind(coordinates(spp),d$surv[,"time"])
-    text3d(xyp[unc,],texts="X",col=pcol[1])
-###points3d(xyp[unc,], size=size[1], col=pcol[1])
-
-###    points3d(xyp[!unc,], size=size[2], col=pcol[2])
+    if(pstyle=="text"){
+        psize=psize/12
+        text3d(xyp[unc,],texts=ptext[1],col=pcol[1], cex=psize[1], alpha=palpha)
+        text3d(xyp[!unc,],texts=ptext[2],col=pcol[2], cex=psize[2], alpha=palpha)
+    }
+    if(pstyle=="point"){
+        points3d(xyp[unc,], size=psize[1], col=pcol[1], alpha=palpha)
+        points3d(xyp[!unc,], size=psize[2], col=pcol[2], alpha=palpha)
+    }
     aspect3d(c(1,1,1))
     title3d(main=title,xlab='x',ylab='y',zlab='Time')
     axes3d()
