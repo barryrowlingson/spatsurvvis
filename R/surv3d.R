@@ -18,7 +18,7 @@
 ##' @author Barry S Rowlingson
 surv3d <- function(spp, ss,
                    lwd=2, lcol="black",lalpha=1.0,
-                   pstyle="point",
+                   pstyle=c("point","text"),
                    psize=c(20,10),
                    pcol=c("red","black"),
                    ptext = c("X",""),
@@ -26,6 +26,8 @@ surv3d <- function(spp, ss,
                    title="Spatial Survival",
                    basegrid=FALSE, baseplane=FALSE){
 
+    pstyle=match.arg(pstyle)
+    
     nr = nrow(spp)
     xy = rbind(coordinates(spp),coordinates(spp))
     xyz = cbind(xy,c(rep(0,nr), d$surv[,"time"]))
