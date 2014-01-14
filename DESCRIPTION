@@ -12,3 +12,7 @@ Collate:
     'spatsurvvis-package.r'
     'survmap.R'
     'survplot.R'
+    'field.R'
+    'ggreccy.R'
+    'ggsurv.R'
+    'surv3d.R'

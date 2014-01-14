@@ -14,7 +14,7 @@
 ##' @param title Main title for plot
 ##' @param basegrid add a grid at t=0
 ##' @param baseplane add a plane at t=0
-##' @return 
+##' @return nothing
 ##' @author Barry S Rowlingson
 surv3d <- function(spp, ss,
                    lwd=2, lcol="black",lalpha=1.0,
